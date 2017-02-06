@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_snp') }}" method=post class=add_snp_form>
+      <b>Add snp</b>
+	  <dl>
+        <dt>Name:
+        <dd><input type=text name=snp_name>
+        <dt>5' sequence:
+        <dd><input type=text name=sequence5>
+        <dt>3' sequence:
+        <dd><input type=text name=sequence3>
+        <dt>Alleles:
+        <dd><input type=text name=alleles>
+        <dt>Gene name:
+        <dd><input type=text name=gene_name>
+        <dt>Chromosome:
+        <dd><input type=text name=chromosome>  
+        <dt>Position:
+        <dd><input type=text name=position>		
+        <dd><input type=submit value="Add snp">
+      </dl>
+	  
+    </form>
+	<a href="{{ url_for('show_snp') }}" class="button">Show SNiPs currently in database.</a>  
+  {% endif %}
+
+{% endblock %}

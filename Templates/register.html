@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_user') }}" method=post>
+      <b>Add user</b>
+	  <dl>
+        <dt>Login:
+        <dd><input type=text name=login>
+        <dt>Password:
+        <dd><input name=password type=password>
+        <dt>Permission:
+        <dd><select name=perm>
+        {% for perm in permissions %}
+                <option value={{ perm.Permission }}>{{ perm.Permission }}</option>
+        {% endfor %}
+        </select>
+        <dd><input type=submit value=Add user>
+        
+            
+      </dl>
+	  
+    </form>
+  {% endif %}
+
+{% endblock %}

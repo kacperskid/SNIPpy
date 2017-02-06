@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+  <table class=snp_table align=center>
+      
+      <caption>List of existing SNPs in database:</caption>
+      
+      <tr>
+        <th>Name</th>
+        <th>5' sequence</th>
+        <th>3' sequence</th>
+        <th>Alleles</th>
+        <th>Chromosome</th>
+        <th>Position</th>
+        <th>Gene name</th>
+       </tr>
+      
+      {% for entry in entries %}
+      <tr>
+        <td>{{entry.name}}</td>
+        <td>{{entry.seq5}}</td>
+        <td>{{entry.seq3}}</td>
+        <td>{{entry.alleles}}</td>
+        <td>{{entry.chrom}}</td>
+        <td>{{entry.chrom}}</td>
+        <td>{{entry.Gene_name}}</td>
+      </tr>
+        
+      {% else %}
+        <td><em>Unbelievable.  No entries here so far</em></td>
+      {% endfor %}
+      
+  </table>
+  <br>
+  <a href="{{ url_for('snp_form') }}" class="button">Add new SNiPs</a> 
+  {% endif %}
+
+{% endblock %}

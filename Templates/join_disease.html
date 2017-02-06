@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if session.logged_in %}
+        
+        <form action = "{{url_for ('join_disease_snp')}}" method=POST>
+            <dl>   
+            <dt>Select SNP
+                {% for snp in snp_list %}    
+                <dd><input type="radio" name="snp" value="{{snp.id_snp}}"> {{snp.name}}   
+                {% endfor %}
+            <dt>Select disease
+                {% for disease in disease_list %}    
+                <dd><input type="radio" name="disease" value="{{disease.id_disease}}"> {{disease.disease_name}}, {{disease.effect}}   
+                {% endfor %}
+            <dd><input type=submit value="Connect!">
+        </form>
+      
+      {% endif %}
+    
+{% endblock %}

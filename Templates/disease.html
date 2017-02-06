@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    {% block table %}{% endblock %}
+    <form action="{{ url_for('add_disease') }}" method=post>
+      <b>Add disease</b>
+	  <dl>
+        <dt>Name:
+        <dd><input type=text name=disease_name>
+        
+	    <dt>Description:
+        <dd><input type=text name=description>
+        
+	    <dt>Effect:
+        <dd><input type=text name=effect>
+	
+        <dd><input type=submit value="Add disease">
+      </dl>
+	  
+    </form>
+
+	 
+  {% endif %}
+
+  <br>
+  <a href="{{ url_for('show_disease') }}" class="button">Show diseases in database.</a> 
+  {% endblock %}
+    
+

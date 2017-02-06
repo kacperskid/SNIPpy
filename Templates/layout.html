@@ -1,0 +1,33 @@
+<!doctype html>
+<title>Snip.py</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+{% if session.logged_in %}
+    <a href="{{ url_for('logout') }}" class="button_small logout">Log out</a>
+{% endif %}
+<div class=page>
+  <h1 class="logo">SNiP.py</h1>
+  <div class=metanav>
+  {% if not session.logged_in %}
+	<p>Please <a href= "{{ url_for('login') }}">log in</a> to use snippy<br>
+  {% else %}
+  <div class="menu">
+  <ul class = "navbar">
+    <li><a href="{{ url_for('show_snp') }}">Show SNiPs</a></li>
+    <li><a href="{{ url_for('show_connections') }}">Show connections</a></li>
+    <li><a href="{{ url_for('snp_form') }}">Add SNiPs</a></li>
+    <li><a href="{{ url_for('disease_form') }}">Add new disease</a></li>
+    <li><a href="{{ url_for('join_disease') }}">Connect SNP with disease</a></li>    
+    <li><a href="{{ url_for('register') }}">Register new user</a></li>
+    
+
+  </ul>
+  </div>
+  {% endif %}
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+
+  
+</div>
